@@ -1,0 +1,44 @@
+test:
+   name: basic-contract-benchmark
+   description: test benchmark
+   workers:
+     number: 2
+   rounds:
+      - label: createcar
+        description: Create car transactions
+        txNumber: 1000
+        rateControl:
+            {
+              "type": "maximum-rate",
+              "opts": {
+                  "tps": 30,
+                  "step": 5,
+                  "sampleInterval": 10,
+                  "includeFailed": true
+              }
+          }
+        workload:
+          module: Workload/createcar.js
+          arguments:
+            assets: 30
+            contractId: KBA-Automobile
+monitors:
+  resource:
+    - module: docker
+      options:
+        interval: 5
+        cpuUsageNormalization: true
+        containers:
+          -  all
+    #  - label: readcar
+    #    description: Read car benchmark
+    #    txDuration: 20
+    #    rateControl:
+    #       type: fixed-load
+    #       opts:
+    #        transactionLoad: 2
+    #    workload:
+    #       module:  Workload/readcar.js
+    #       arguments:
+    #        assets: 10
+    #        contractId: KBA-Automobile
