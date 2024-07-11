@@ -101,11 +101,11 @@ Application: &ApplicationDefaults
 Orderer: &OrdererDefaults
   Addresses:
     - orderer.auto.com:7050
-  BatchTimeout: 2s
+  BatchTimeout: 25s
   BatchSize:
-    MaxMessageCount: 10
+    MaxMessageCount: 300
     AbsoluteMaxBytes: 99 MB
-    PreferredMaxBytes: 512 KB
+    PreferredMaxBytes: 10 MB
   Organizations:
   Policies:
     Readers:

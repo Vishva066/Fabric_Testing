@@ -2,16 +2,16 @@ test:
    name: basic-contract-benchmark
    description: test benchmark
    workers:
-     number: 2
+     number: 6
    rounds:
       - label: createcar
         description: Create car transactions
-        txNumber: 1000
+        txNumber: 3000
         rateControl:
             {
               "type": "maximum-rate",
               "opts": {
-                  "tps": 30,
+                  "tps": 40,
                   "step": 5,
                   "sampleInterval": 10,
                   "includeFailed": true
@@ -23,13 +23,13 @@ test:
             assets: 30
             contractId: KBA-Automobile
 monitors:
-  resource:
+ resource:
     - module: docker
       options:
-        interval: 5
+        interval: 10
         cpuUsageNormalization: true
         containers:
-          -  all
+          - all
     #  - label: readcar
     #    description: Read car benchmark
     #    txDuration: 20

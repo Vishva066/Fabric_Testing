@@ -1,0 +1,68 @@
+{
+	"name": "automobile-network",
+	"version": "1.0.0",
+	"client": {
+		"tlsEnable": true,
+		"adminCredential": {
+			"id": "exploreradmin6",
+			"password": "exploreradminpw"
+		},
+		"caCredential": {
+			"id": "admin",
+			"password": "adminpw"
+		},
+		"enableAuthentication": true,
+		"organization": "Manufacturer",
+		"connection": {
+			"timeout": {
+				"peer": {
+					"endorser": "300"
+				},
+				"orderer": "300"
+			}
+		}
+	},
+	"channels": {
+		"autochannel": {
+			"peers": {
+				"peer0.manufacturer.auto.com": {}
+			},
+			"connection": {
+				"timeout": {
+					"peer": {
+						"endorser": "6000",
+						"eventHub": "6000",
+						"eventReg": "6000"
+					}
+				}
+			}
+		}
+	},
+	"organizations": {
+		"Manufacturer": {
+			"mspid": "ManufacturerMSP",
+			"peers": ["peer0.manufacturer.auto.com"],
+			"certificateAuthorities": ["ca0"]
+		}
+	},
+	"peers": {
+		"peer0.manufacturer.auto.com": {
+			"tlsCACerts": {
+				"path": "/tmp/crypto/peerOrganizations/manufacturer.auto.com/peers/peer0.manufacturer.auto.com/tls/ca.crt"
+			},
+			"url": "grpcs://peer0.manufacturer.auto.com:7051"
+		}
+	},
+	"certificateAuthorities": {
+		"ca0": {
+			"url": "https://ca_manufacturer:7054",
+			"httpOptions": {
+				"verify": false
+			},
+			"tlsCACerts": {
+				"path": "/tmp/crypto/peerOrganizations/manufacturer.auto.com/ca/ca.manufacturer.auto.com-cert.pem"
+			},
+			"caName": "ca-manufacturer"
+		}
+	}
+}

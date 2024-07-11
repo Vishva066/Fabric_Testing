@@ -1,0 +1,9 @@
+{
+	"network-configs": {
+		"automobile-network.json": {
+			"name": "automobile-network",
+			"profile": "./connection-profile/automobile-network.json"
+		}
+	},
+	"license": "Apache-2.0"
+}
