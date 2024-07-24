@@ -2,16 +2,16 @@ test:
    name: basic-contract-benchmark
    description: test benchmark
    workers:
-     number: 6
+     number: 12
    rounds:
       - label: createcar
         description: Create car transactions
-        txNumber: 3000
+        txNumber: 1000
         rateControl:
             {
               "type": "maximum-rate",
               "opts": {
-                  "tps": 40,
+                  "tps": 10,
                   "step": 5,
                   "sampleInterval": 10,
                   "includeFailed": true
